@@ -9,12 +9,7 @@ const TransactionDetails = () => {
   const { transactions, isLoading, error } = useTransactions();
 
   const { id } = useParams();
-  const transaction = transactions.find((item) => item.ID === id);
-  console.log(transaction);
-
-  if (!transaction) {
-      return notFound();
-  }
+  const transaction = transactions.find((item) => item.ID === id);   
 
   if (error) {
     return <div>{error}</div>;
