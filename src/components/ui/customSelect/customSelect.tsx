@@ -24,7 +24,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const handleSelectChange = (
     newValue: SingleValue<OptionType> | MultiValue<OptionType>
   ) => {
-    // Ensure that we correctly pass only a single selected value
     handleChange(newValue as SingleValue<OptionType>);
   };
 

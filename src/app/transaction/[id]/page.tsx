@@ -35,16 +35,16 @@ const TransactionDetails = () => {
     <div className="h-screen">
       <div className="border w-[70%] mx-auto flex flex-col gap-3">
         <div className="flex flex-col gap-6">
-          <h1 className="w-[30%]">User ID: {transaction?.ID}</h1>
-          <h1 className="w-[30%]">Time: {formatTimestamp(transaction?.Timestamp)}</h1>
+          <h1 className="">User ID: {transaction?.ID}</h1>
+          <h1 className="">Time: {formatTimestamp(transaction?.Timestamp)}</h1>
         </div>
         <div className="flex flex-col gap-6">
-          <h1 className="w-[30%]">User Amount: {transaction?.Amount}</h1>
-          <h1 className="w-[30%]">User Status: {transaction?.Status}</h1>
+          <h1 className="">User Amount: {transaction?.Amount}</h1>
+          <h1 className="">User Status: {transaction?.Status}</h1>
         </div>
         <div className="flex flex-col gap-6">
-          <h1 className="w-[30%]">UserName: {transaction?.["Receiver Name"]}</h1>
-          <h1 className="w-[30%]">ReceiverName: {transaction?.["Sender Name"]}</h1>
+          <h1 className="">UserName: {transaction?.["Receiver Name"]}</h1>
+          <h1 className="">ReceiverName: {transaction?.["Sender Name"]}</h1>
         </div>
       </div>
     </div>
