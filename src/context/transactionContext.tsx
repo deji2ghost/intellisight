@@ -6,24 +6,45 @@ import { transactionProps } from "@/utils/types/transactionTypes";
 
 interface TransactionContextType {
   transactions: transactionProps[];
+  setTransactions: React.Dispatch<React.SetStateAction<transactionProps[]>>
   isLoading: boolean;
   error: string | null;
   currentPage: number;
   setCurrentPage: (page: number) => void;
   optionsToggle: string | null;
   setOptionsToggle: React.Dispatch<React.SetStateAction<string | null>>;
-  itemPerPage: number
+  itemPerPage: number;
+  dropButton: boolean;
+  setDropButton: (value: boolean) => void;
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+  buttonItem: string;
+  setButtonItem: (value: string) => void;
+  filteredTransactions: transactionProps[]
 }
 
-const TransactionContext = createContext<TransactionContextType | undefined>(undefined);
+const TransactionContext = createContext<TransactionContextType | undefined>(
+  undefined
+);
 
-export const TransactionProvider = ({ children }: { children: React.ReactNode }) => {
+export const TransactionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [transactions, setTransactions] = useState<transactionProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [optionsToggle, setOptionsToggle] = useState<string | null>(null);
-  const itemPerPage = 10
+  const itemPerPage = 10;
+  const [dropButton, setDropButton] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [buttonItem, setButtonItem] = useState<string>("All");
+
+  const [filteredTransactions, setFilteredTransactions] = useState<
+    transactionProps[]
+  >([]);
 
   useEffect(() => {
     const getTransactions = async () => {
@@ -44,6 +65,15 @@ export const TransactionProvider = ({ children }: { children: React.ReactNode })
     getTransactions();
   }, []);
 
+  useEffect(() => {
+    let filtered = transactions;
+    console.log(filtered);
+    if (buttonItem !== "All") {
+      filtered = transactions.filter((item) => item.Status === buttonItem);
+    }
+    setFilteredTransactions(filtered);
+  }, [buttonItem, transactions]);
+
   return (
     <TransactionContext.Provider
       value={{
@@ -54,7 +84,15 @@ export const TransactionProvider = ({ children }: { children: React.ReactNode })
         setCurrentPage,
         optionsToggle,
         setOptionsToggle,
-        itemPerPage
+        itemPerPage,
+        dropButton,
+        setDropButton,
+        isOpen,
+        setIsOpen,
+        buttonItem,
+        setButtonItem,
+        filteredTransactions,
+        setTransactions
       }}
     >
       {children}
@@ -65,7 +103,9 @@ export const TransactionProvider = ({ children }: { children: React.ReactNode })
 export const useTransactions = () => {
   const context = useContext(TransactionContext);
   if (!context) {
-    throw new Error("useTransactions must be used within a TransactionProvider");
+    throw new Error(
+      "useTransactions must be used within a TransactionProvider"
+    );
   }
   return context;
 };

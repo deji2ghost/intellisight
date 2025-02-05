@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-table";
 import { TableProps } from "./tableTypes";
 import { CustomPagination } from "../customPagination/custompagination";
-import Loader from "../Loader/loader";
+import Loader from "../Loader/Loader";
 
 const Table = <T,>({
   data,
@@ -61,8 +61,8 @@ const Table = <T,>({
             </tr>
           ) : isLoading ? (
             <tr>
-              <td colSpan={columns.length} className="text-center py-4">
-                <Loader className="w-full h-full" />
+              <td colSpan={columns.length} className="text-center py-4 flex items-center justify-center">
+                <Loader />
               </td>
             </tr>
           ) : (

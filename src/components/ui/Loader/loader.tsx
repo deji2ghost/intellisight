@@ -1,12 +1,10 @@
-import React from 'react'
-import { FiLoader } from 'react-icons/fi'
 
-const Loader = ({className}: {className: string}) => {
+export const Loader = () => {
   return (
-    <div className={className}>
-      <FiLoader />
+    <div className={`flex w-full items-center justify-center text-purpleFragments-#633CFF`}>
+      Loading.....
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

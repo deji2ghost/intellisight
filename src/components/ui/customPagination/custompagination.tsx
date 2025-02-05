@@ -10,7 +10,7 @@ export const CustomPagination= ({
   const paginationArray = getPaginationArray(currentPage, totalPages);
 
   return (
-    <div className="border flex items-center gap-2 justify-end">
+    <div className="flex items-center gap-2 justify-end">
       {/* Previous Button */}
       <CustomButton
         disabled={currentPage === 1}
