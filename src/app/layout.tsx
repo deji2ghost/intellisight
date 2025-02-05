@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { TransactionProvider } from "@/context/transactionContext";
+import Navbar from "@/components/layout/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,11 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <TransactionProvider>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-greyFragments-#FAFAFA text-greyFragments-#333333 flex flex-col gap-3`}
       >
+        <Navbar />
         {children}
       </body>
+      </TransactionProvider>
     </html>
   );
 }
