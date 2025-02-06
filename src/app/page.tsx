@@ -172,7 +172,7 @@ export default function Home() {
 
   return (
     <div onClick={() => setOptionsToggle(null)} className=" w-full py-5">
-      <div className="flex items-center justify-between px-5 md:px-10">
+      <div className="flex items-center justify-between px-5 md:px-10 mb-3">
         <CustomButton
           onClick={handleDropDown}
           handleDropdownItem={(item) => handleButtonItem(item)}
@@ -186,7 +186,7 @@ export default function Home() {
           New Invoice
         </CustomButton>
       </div>
-      <div className="w-full md:w-[70%] mx-auto">
+      <div className="w-[80%] md:w-[70%] mx-auto">
         <Table
           columns={TransactionColumns(optionsToggle, setOptionsToggle)}
           currentPage={currentPage}
