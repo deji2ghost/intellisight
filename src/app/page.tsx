@@ -196,7 +196,7 @@ export default function Home() {
           New Invoice
         </CustomButton>
       </div>
-      <div className="w-full md:w-[60%] mx-auto">
+      <div className="w-full md:w-[70%] mx-auto">
         <Table
           columns={TransactionColumns(optionsToggle, setOptionsToggle)}
           currentPage={currentPage}

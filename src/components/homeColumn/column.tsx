@@ -22,38 +22,41 @@ export const TransactionColumns = (
     header: () => (
       <span className="overflow-auto whitespace-nowrap cursor-pointer">ID</span>
     ),
-    // Ensure unique key
     id: "ID-column", 
   }),
   columnHelper.accessor("Sender Name", {
     cell: (info) => (
       <Link
         href={`/transaction/${info.row.original.ID}`}
-        className="text-ellipsis overflow-auto whitespace-nowrap cursor-pointer"
+        className="block max-w-[130px] truncate cursor-pointer"
+        title={info.getValue()} // Show full text on hover
       >
         {info.getValue()}
       </Link>
     ),
     header: () => (
-      <span className="overflow-auto whitespace-nowrap cursor-pointer">Sender Name</span>
+      <span className="overflow-auto whitespace-nowrap cursor-pointer">
+        Sender Name
+      </span>
     ),
-    // Ensure unique key
-    id: "Sender-Name-column", 
+    id: "Sender-Name-column",
   }),
   columnHelper.accessor("Receiver Name", {
     cell: (info) => (
       <Link
         href={`/transaction/${info.row.original.ID}`}
-        className="text-ellipsis overflow-auto whitespace-nowrap cursor-pointer"
+        className="block max-w-[130px] truncate cursor-pointer"
+        title={info.getValue()} // Show full text on hover
       >
         {info.getValue()}
       </Link>
     ),
     header: () => (
-      <span className="overflow-auto whitespace-nowrap cursor-pointer">Receiver Name</span>
+      <span className="overflow-auto whitespace-nowrap cursor-pointer">
+        Receiver Name
+      </span>
     ),
-    // Ensure unique key
-    id: "Receiver-Name-column", 
+    id: "Receiver-Name-column",
   }),
   columnHelper.accessor("Amount", {
     cell: (info) => (
@@ -67,7 +70,6 @@ export const TransactionColumns = (
     header: () => (
       <span className="overflow-auto whitespace-nowrap cursor-pointer">Amount</span>
     ),
-    // Ensure unique key
     id: "Amount-column", 
   }),
   columnHelper.accessor("Status", {
@@ -82,7 +84,6 @@ export const TransactionColumns = (
     header: () => (
       <span className="overflow-auto whitespace-nowrap cursor-pointer">Status</span>
     ),
-    // Ensure unique key
     id: "Status-column", 
   }),
   columnHelper.accessor("Timestamp", {
@@ -119,7 +120,7 @@ export const TransactionColumns = (
             >
               <Link
                 href={`/transaction/${item.ID}`}
-                className="cursor-pointer inline-block py-1 px-[2px] text-[14px] font-[400] hover:bg-[#FAFAFA]"
+                className="cursor-pointer inline-block py-1 p-3 text-[14px] font-[400] hover:bg-[#FAFAFA]"
               >
                 View transaction details
               </Link>
@@ -129,7 +130,6 @@ export const TransactionColumns = (
       );
     },
     header: () => <span className="">Options</span>,
-    // Ensure unique key
     id: "Timestamp-column", 
   }),
 ];
