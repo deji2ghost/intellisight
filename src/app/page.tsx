@@ -13,6 +13,7 @@ import CustomSelect, {
 } from "@/components/ui/customSelect/customSelect";
 import { FormErrors } from "@/utils/types/transactionTypes";
 import dynamic from "next/dynamic";
+import { options } from "../../public/data/optiondata";
 
 const Modal = dynamic(() => import("@/components/ui/customModal/modal"), { ssr: false });
 
@@ -43,12 +44,6 @@ export default function Home() {
     Status: "",
   });
 
-  const options = [
-    { value: "Completed", label: "Completed" },
-    { value: "Failed", label: "Failed" },
-    { value: "Pending", label: "Pending" },
-  ];
-
   const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
   const [invoiceForm, setInvoiceForm] = useState({
     "ID": "",
@@ -60,8 +55,6 @@ export default function Home() {
   });
 
   const handleNewInvoice = () => {
-    // Check for empty or invalid fields
-    console.log("clicked")
   const newErrors: FormErrors = {
     "Sender Name": "",
     "Receiver Name": "",
@@ -105,13 +98,11 @@ export default function Home() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const lastTransaction = transactions[transactions.length - 1];
-    // const lastIDNumber = parseInt(lastTransaction.ID.replace("TXN", ""), 10);
     const newID = `TXN${String(transactions.length + 1).padStart(3, "0")}`;
     const { value, name } = e.target;
     let trimmedValue = value.trimStart();
 
-    // Validation
+  
   let errorMessage = "";
   if (trimmedValue === "") {
     errorMessage = `${name} is required.`;
@@ -119,17 +110,16 @@ export default function Home() {
     errorMessage = "Amount must be a valid number.";
   }
 
-  // Update errors state
+  
   setErrors((prevErrors) => ({
     ...prevErrors,
     [name]: errorMessage,
   }));
 
     if (name === "Amount") {
-      // Remove non-numeric characters (including $) to handle input properly
+      
       const numericValue = trimmedValue.replace(/[^0-9.]/g, "");
   
-      // Store the numeric value for calculations (without the $ sign)
       trimmedValue = `$${numericValue}`;
     }
   
