@@ -120,7 +120,7 @@ export const TransactionColumns = (
             >
               <Link
                 href={`/transaction/${item.ID}`}
-                className="cursor-pointer inline-block py-1 p-3 text-[14px] font-[400] hover:bg-[#FAFAFA]"
+                className="cursor-pointer inline-block p-3 text-[14px] font-[400] hover:bg-[#FAFAFA]"
               >
                 View transaction details
               </Link>
